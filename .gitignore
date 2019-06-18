@@ -1,0 +1,34 @@
+# compiled output
+api-temperatura/dist
+api-temperatura/node_modules
+
+# Logs
+api-temperatura/logs
+api-temperatura/*.log
+api-temperatura/npm-debug.log*
+api-temperatura/yarn-debug.log*
+api-temperatura/yarn-error.log*
+api-temperatura/lerna-debug.log*
+
+# OS
+api-temperatura/.DS_Store
+
+# Tests
+api-temperatura/coverage
+api-temperatura/.nyc_output
+
+# IDEs and editors
+api-temperatura/.idea
+api-temperatura.project
+api-temperatura.classpath
+api-temperatura.c9/
+api-temperatura/*.launch
+api-temperatura/.settings/
+api-temperatura/*.sublime-workspace
+
+# IDE - VSCode
+api-temperatura/.vscode/*
+api-temperatura/!.vscode/settings.json
+api-temperatura/!.vscode/tasks.json
+api-temperatura/!.vscode/launch.json
+api-temperatura/!.vscode/extensions.json
