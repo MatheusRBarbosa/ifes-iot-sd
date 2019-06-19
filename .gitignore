@@ -32,3 +32,39 @@ api-temperatura/!.vscode/settings.json
 api-temperatura/!.vscode/tasks.json
 api-temperatura/!.vscode/launch.json
 api-temperatura/!.vscode/extensions.json
+
+
+# compiled output
+consumer/dist
+consumer/node_modules
+
+# Logs
+consumer/logs
+consumer/*.log
+consumer/npm-debug.log*
+consumer/yarn-debug.log*
+consumer/yarn-error.log*
+consumer/lerna-debug.log*
+
+# OS
+consumer/.DS_Store
+
+# Tests
+consumer/coverage
+consumer/.nyc_output
+
+# IDEs and editors
+consumer/.idea
+consumer.project
+consumer.classpath
+consumer.c9/
+consumer/*.launch
+consumer/.settings/
+consumer/*.sublime-workspace
+
+# IDE - VSCode
+api-temperatura/.vscode/*
+api-temperatura/!.vscode/settings.json
+api-temperatura/!.vscode/tasks.json
+api-temperatura/!.vscode/launch.json
+api-temperatura/!.vscode/extensions.json

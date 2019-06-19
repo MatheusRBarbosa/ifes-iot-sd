@@ -8,7 +8,7 @@ export async function publish ( connection: Channel, temperatura: Temperatura ) 
   connection.publish(
     conf.rabbitTopicName,
     conf.rabbitPublishRoutingKey,
-    new Buffer( JSON.stringify( temperatura ) ),
+    Buffer.from( JSON.stringify( temperatura ) ),
     { persistent: false }
   );
 }

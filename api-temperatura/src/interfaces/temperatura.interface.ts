@@ -1,4 +1,5 @@
 export interface Temperatura{
     temperatura: number,
-    umidade: number
+    umidade: number,
+    timestamp: Date
 }

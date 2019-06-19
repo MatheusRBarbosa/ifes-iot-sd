@@ -16,8 +16,13 @@ export class AppService {
     if(temperatura != undefined && umidade != undefined){
       const temp: Temperatura = {
         temperatura: temperatura,
-        umidade: umidade
+        umidade: umidade,
+        timestamp: new Date()
       }
+
+      console.log('Enviando: ');
+      console.log(temp);
+      console.log('=======================');
 
       publish(this.publishChannel, temp);
       return 200;
