@@ -1,10 +1,10 @@
 import { Connection } from 'mongoose';
-import { TemperaturaSchema } from '../interfaces/temperatura.schema';
+import { TemperaturaSchema } from './schemas/temperatura.schema';
 
 export const temperaturaProviders = [
   {
-    provide: 'TemperaturaModelToken',
+    provide: 'TEMPERATURA_MODEL',
     useFactory: (connection: Connection) => connection.model('Temperatura', TemperaturaSchema),
-    inject: ['DbConnectionToken'],
-  }
+    inject: ['DATABASE_CONNECTION'],
+  },
 ];

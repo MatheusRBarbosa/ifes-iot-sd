@@ -2,15 +2,16 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Channel } from 'amqplib';
 import { getConsumerChannel } from './rabbitmq/getConsumerChannel.service';
 import * as conf from './config/rabbitmq.config';
-import { Temperatura } from './interfaces/temperatura.interface';
+import { Temperatura } from './temperatura/interfaces/temperatura.interface';
 import { TemperaturaService } from './temperatura/temperatura.service';
 import { Model } from 'mongoose';
+import { TemperaturaDto } from './temperatura/dto/temperatura.dto';
 
 @Injectable()
 export class AppService {
   
   constructor(
-      @Inject('TemperaturaModelToken')
+      @Inject('TEMPERATURA_MODEL')
       private readonly TemperaturaModel: Model<Temperatura>
   )
   {
@@ -29,14 +30,14 @@ export class AppService {
 
       await consumerChannel.consume( conf.rabbitConsumerQueueName, async ( msg ) => {
           consumerChannel.ack( msg );
-          let temp: Temperatura = JSON.parse( msg.content.toString() );
+          let temp: TemperaturaDto = JSON.parse( msg.content.toString() );
 
 
           console.log('Recebendo: ');
           console.log(temp);
           console.log('====================');
 
-          await this.tempService.insertData(temp);
+          await this.tempService.create(temp);
 
       } );
   }
