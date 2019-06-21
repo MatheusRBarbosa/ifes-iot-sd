@@ -10,14 +10,14 @@ export class TemperaturaService {
     ) {}
 
   async create(createTempDto: TemperaturaDto): Promise<void> {
-  
-    if(createTempDto.temperatura > 30 || createTempDto.temperatura < 0 || createTempDto.umidade > 25 || createTempDto.umidade < 10){
-      const createTemp = new this.tempModel(createTempDto);
-      await createTemp.save();
-      console.log(`Temperatura Anormal`)
+    let createTemp: Temperatura;
+    if(createTempDto.temperatura > 27 || createTempDto.temperatura < 18 || createTempDto.umidade > 55 || createTempDto.umidade < 40){
+      createTempDto.intervalo = false;
     }
     else{
-      console.log(`Temperatura Normal`)
+      createTempDto.intervalo = true;
     }
+    createTemp = new this.tempModel(createTempDto);
+    await createTemp.save();
   }
 }

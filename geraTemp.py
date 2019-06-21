@@ -1,7 +1,5 @@
-import json;
-import requests;
-
-#apiUrl = 'https://ptsv2.com/t/l6bey-1560872553/post'
+import json
+import requests
 
 temperatura = input('Temperatura: ')
 umidade = input('Umidade: ')
