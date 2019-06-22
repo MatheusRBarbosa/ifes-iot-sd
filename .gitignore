@@ -19,9 +19,9 @@ api-temperatura/.nyc_output
 
 # IDEs and editors
 api-temperatura/.idea
-api-temperatura.project
-api-temperatura.classpath
-api-temperatura.c9/
+api-temperatura/.project
+api-temperatura/.classpath
+api-temperatura/.c9/
 api-temperatura/*.launch
 api-temperatura/.settings/
 api-temperatura/*.sublime-workspace
@@ -55,16 +55,51 @@ consumer/.nyc_output
 
 # IDEs and editors
 consumer/.idea
-consumer.project
-consumer.classpath
-consumer.c9/
+consumer/.project
+consumer/.classpath
+consumer/.c9/
 consumer/*.launch
 consumer/.settings/
 consumer/*.sublime-workspace
 
 # IDE - VSCode
-api-temperatura/.vscode/*
-api-temperatura/!.vscode/settings.json
-api-temperatura/!.vscode/tasks.json
-api-temperatura/!.vscode/launch.json
-api-temperatura/!.vscode/extensions.json
+consumer/.vscode/*
+consumer/!.vscode/settings.json
+consumer/!.vscode/tasks.json
+consumer/!.vscode/launch.json
+consumer/!.vscode/extensions.json
+
+# compiled output
+aplicacao/dist
+aplicacao/node_modules
+
+# Logs
+aplicacao/logs
+aplicacao/*.log
+aplicacao/npm-debug.log*
+aplicacao/yarn-debug.log*
+aplicacao/yarn-error.log*
+aplicacao/lerna-debug.log*
+
+# OS
+aplicacao/.DS_Store
+
+# Tests
+aplicacao/coverage
+aplicacao/.nyc_output
+
+# IDEs and editors
+aplicacao/.idea
+aplicacao/.project
+aplicacao/.classpath
+aplicacao/.c9/
+aplicacao/*.launch
+aplicacao/.settings/
+aplicacao/*.sublime-workspace
+
+# IDE - VSCode
+aplicacao/.vscode/*
+aplicacao/!.vscode/settings.json
+aplicacao/!.vscode/tasks.json
+aplicacao/!.vscode/launch.json
+aplicacao/!.vscode/extensions.json
