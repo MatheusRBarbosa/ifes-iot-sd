@@ -70,36 +70,4 @@ consumer/!.vscode/launch.json
 consumer/!.vscode/extensions.json
 
 # compiled output
-aplicacao/dist
-aplicacao/node_modules
-
-# Logs
-aplicacao/logs
-aplicacao/*.log
-aplicacao/npm-debug.log*
-aplicacao/yarn-debug.log*
-aplicacao/yarn-error.log*
-aplicacao/lerna-debug.log*
-
-# OS
-aplicacao/.DS_Store
-
-# Tests
-aplicacao/coverage
-aplicacao/.nyc_output
-
-# IDEs and editors
-aplicacao/.idea
-aplicacao/.project
-aplicacao/.classpath
-aplicacao/.c9/
-aplicacao/*.launch
-aplicacao/.settings/
-aplicacao/*.sublime-workspace
-
-# IDE - VSCode
-aplicacao/.vscode/*
-aplicacao/!.vscode/settings.json
-aplicacao/!.vscode/tasks.json
-aplicacao/!.vscode/launch.json
-aplicacao/!.vscode/extensions.json
+aplicacao/
