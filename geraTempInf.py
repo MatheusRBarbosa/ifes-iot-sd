@@ -4,13 +4,15 @@ import random
 
 while(1):
     i = 0
-    while(i < 5000):
-        temperatura = random.randint(-10, 45)
-        umidade = random.randint(10, 100)
+    while(i < 100000):
+        i+=1
 
-        apiUrl = "http://localhost:3000/temperatura/{0}/umidade/{1}".format(temperatura, umidade)
+    temperatura = random.randint(-10, 45)
+    umidade = random.randint(10, 100)
 
-        response = requests.post(apiUrl)
+    apiUrl = "http://localhost:3001/temperatura/{0}/umidade/{1}".format(temperatura, umidade)
 
-        responseText = response.text
-        print(responseText)
+    response = requests.post(apiUrl)
+
+    responseText = response.text
+    print(responseText)

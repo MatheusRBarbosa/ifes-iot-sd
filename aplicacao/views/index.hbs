@@ -89,7 +89,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="p-4 border-bottom bg-light">
-                    <h4 class="card-title mb-0">Umidades</h4>
+                    <h4 class="card-title mb-0">Umidades Válidas</h4>
                   </div>
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center pb-4">
@@ -112,7 +112,30 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="p-4 border-bottom bg-light">
-                    <h4 class="card-title mb-0">Temperaturas</h4>
+                    <h4 class="card-title mb-0">Umidades Não Válidas</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center pb-4">
+                      <div id="line-traffic-legend"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <h2 id="totalUmidade1" class="mb-0 font-weight-medium">0</h2>
+                        <p class="mb-5 text-muted">Total</p>
+                      </div>
+                      <div class="col-md-3">
+                        <h2 id="mediaUmidade1" class="mb-0 font-weight-medium">0</h2>
+                        <p class="mb-5 text-muted">Umidade média</p>
+                      </div>
+                    </div>
+                    <canvas id="lineChart1" style="height:250px"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="p-4 border-bottom bg-light">
+                    <h4 class="card-title mb-0">Temperaturas Válidas</h4>
                   </div>
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center pb-4">
@@ -130,6 +153,30 @@
                       </div>
                     </div>
                     <canvas id="areaChart" style="height:250px"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="p-4 border-bottom bg-light">
+                    <h4 class="card-title mb-0">Temperaturas Não Válidas</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center pb-4">
+                      
+                      <div id="area-traffic-legend"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <h2 id="totalTemp1" class="mb-0 font-weight-medium">0</h2>
+                        <p class="mb-5 text-muted">Total</p>
+                      </div>
+                      <div class="col-md-4">
+                        <h2 id="mediaTemp1" class="mb-0 font-weight-medium">0</h2>
+                        <p class="mb-5 text-muted">Temperatura média</p>
+                      </div>
+                    </div>
+                    <canvas id="areaChart1" style="height:250px"></canvas>
                   </div>
                 </div>
               </div>

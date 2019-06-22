@@ -12,42 +12,76 @@ export class TemperaturaService {
   async findAllTemp() {
 
     let temp: Temperatura[] = await this.tempModel.find().exec();
-    let temperaturas: Number[] = [];
-    let umidades: Number[] = [];
     let tempos: String[] = [];
+    let temposI: String[] = [];
+
+    let temperaturas: Number[] = [];
+    let temperaturasI: Number[] = [];
+
+    let umidades: Number[] = [];
+    let umidadesI: Number[] = [];
+
     let mediaTemp : number = 0;
+    let mediaTempI : number = 0;
+
     let mediaUmidade: number = 0;
+    let mediaUmidadeI: number = 0;
+
     let count: number = 0;
+    let countI: number = 0;
 
     for(let i=0; i<temp.length;i++){
       if(temp[i] != undefined){
-        mediaTemp += temp[i].temperatura
-        mediaUmidade += temp[i].umidade
-        count++;
+        if(temp[i].intervalo){
+          mediaTemp += temp[i].temperatura
+          mediaUmidade += temp[i].umidade
+          count++;
+        }
+        else{
+          mediaTempI += temp[i].temperatura
+          mediaUmidadeI += temp[i].umidade
+          countI++;
+        }
       }
     }
     mediaTemp = Math.round(mediaTemp / count);
-    mediaUmidade = Math.round(mediaUmidade / count);
+    mediaTempI = Math.round(mediaTempI / countI);
 
-    for(let i=temp.length-1; i >= temp.length-11; i--){
+    mediaUmidade = Math.round(mediaUmidade / count);
+    mediaUmidadeI = Math.round(mediaUmidadeI / countI);
+
+    for(let i=temp.length-500; i < temp.length; i++){
 
       let t: Temperatura = temp[i];
-      
-      temperaturas.push(t.temperatura);
-      umidades.push(t.umidade)
-      tempos.push(this.dateFormat(t.timestamp.getTime()))
+      if(t != undefined){
+        if(t.intervalo){
+          temperaturas.push(t.temperatura);
+          umidades.push(t.umidade)
+          tempos.push(this.dateFormat(t.timestamp.getTime()))
+        }
+        else{
+          temperaturasI.push(t.temperatura);
+          umidadesI.push(t.umidade)
+          temposI.push(this.dateFormat(t.timestamp.getTime()))
+        }
+      }
       
     }
     
     let resp = {
       labels: tempos,
+      labelsI: temposI,
       temperaturas: temperaturas,
+      temperaturasI: temperaturasI,
       umidades: umidades,
+      umidadesI: umidadesI,
       mediaTemp: mediaTemp,
+      mediaTempI: mediaTempI,
       mediaUmidade: mediaUmidade,
-      total: count
+      mediaUmidadeI: mediaUmidadeI,
+      total: count,
+      totalI: countI
     }
-    console.log(resp)
     return resp;
   }
 

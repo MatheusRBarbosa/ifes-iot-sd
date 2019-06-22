@@ -108,7 +108,7 @@ $(function () {
       url: 'http://localhost:3000',
       success: function(data) {
         document.getElementById('totalUmidade').innerText = data.total
-        document.getElementById('mediaUmidade').innerText = data.mediaUmidade
+        document.getElementById('mediaUmidade').innerText = data.mediaUmidade + "%"
 
         var lineData = {
           labels: data.labels,
@@ -214,6 +214,121 @@ $(function () {
 
 
   }
+  if ($("#lineChart1").length) {
+    
+    $.ajax({
+      type: 'POST',
+      contentType: 'application/json',
+      
+      url: 'http://localhost:3000',
+      success: function(data) {
+        document.getElementById('totalUmidade1').innerText = data.totalI
+        document.getElementById('mediaUmidade1').innerText = data.mediaUmidadeI + "%"
+
+        var lineData = {
+          labels: data.labelsI,
+          datasets: [{
+            data: data.umidadesI,
+            backgroundColor: ChartColor[0],
+            borderColor: ChartColor[0],
+            borderWidth: 3,
+            fill: false,
+            label: "Umidade"
+          }]
+        };
+        var lineOptions = {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            filler: {
+              propagate: false
+            }
+          },
+          scales: {
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Tempo',
+                fontSize: 12,
+                lineHeight: 2
+              },
+              ticks: {
+                fontColor: '#212229',
+                stepSize: 50,
+                min: 0,
+                max: 150,
+                autoSkip: true,
+                autoSkipPadding: 15,
+                maxRotation: 0,
+                maxTicksLimit: 10
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false,
+                color: 'transparent',
+                zeroLineColor: '#eeeeee'
+              }
+            }],
+            yAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Umidade',
+                fontSize: 12,
+                lineHeight: 2
+              },
+              ticks: {
+                fontColor: '#212229',
+                display: true,
+                autoSkip: false,
+                maxRotation: 0,
+                stepSize: 10,
+                min: 0,
+                max: 100
+              },
+              gridLines: {
+                drawBorder: false
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          legendCallback: function (chart) {
+            var text = [];
+            text.push('<div class="chartjs-legend"><ul>');
+            for (var i = 0; i < chart.data.datasets.length; i++) {
+              console.log(chart.data.datasets[i]); // see what's inside the obj.
+              text.push('<li>');
+              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+              text.push(chart.data.datasets[i].label);
+              text.push('</li>');
+            }
+            text.push('</ul></div>');
+            return text.join("");
+          },
+          elements: {
+            line: {
+              tension: 0
+            },
+            point: {
+              radius: 0
+            }
+          }
+        }
+        var lineChartCanvas = $("#lineChart1").get(0).getContext("2d");
+        var lineChart = new Chart(lineChartCanvas, {
+          type: 'line',
+          data: lineData,
+          options: lineOptions
+        });
+        document.getElementById('line-traffic-legend').innerHTML = lineChart.generateLegend();
+        }
+      })
+
+
+  }
   if ($("#areaChart").length) {
     var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
     var gradientStrokeFill_1 = lineChartCanvas.createLinearGradient(1, 2, 1, 280);
@@ -227,7 +342,7 @@ $(function () {
       url: 'http://localhost:3000',
       success: function(data) {
         document.getElementById('totalTemp').innerText = data.total
-        document.getElementById('mediaTemp').innerText = data.mediaTemp
+        document.getElementById('mediaTemp').innerText = data.mediaTemp + " °C"
         var lineData = {
           labels:  data.labels,
           datasets: [{
@@ -319,6 +434,120 @@ $(function () {
           }
         }
         var lineChartCanvas = $("#areaChart").get(0).getContext("2d");
+        var lineChart = new Chart(lineChartCanvas, {
+          type: 'line',
+          data: lineData,
+          options: lineOptions
+        });
+        document.getElementById('area-traffic-legend').innerHTML = lineChart.generateLegend();
+      }
+    })
+  }
+  if ($("#areaChart1").length) {
+    var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+    var gradientStrokeFill_1 = lineChartCanvas.createLinearGradient(1, 2, 1, 280);
+    gradientStrokeFill_1.addColorStop(0, "rgba(20, 88, 232, 0.37)");
+    gradientStrokeFill_1.addColorStop(1, "rgba(255,255,255,0.4)")
+    
+    $.ajax({
+      type: 'POST',
+      contentType: 'application/json',
+      
+      url: 'http://localhost:3000',
+      success: function(data) {
+        document.getElementById('totalTemp1').innerText = data.totalI
+        document.getElementById('mediaTemp1').innerText = data.mediaTempI + " °C"
+        var lineData = {
+          labels:  data.labelsI,
+          datasets: [{
+            data: data.temperaturasI,
+            backgroundColor: gradientStrokeFill_1,
+            borderColor: ChartColor[0],
+            borderWidth: 3,
+            fill: true,
+            label: "Temperatura"
+          }]
+        };
+        
+    
+        var lineOptions = {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            filler: {
+              propagate: false
+            }
+          },
+          scales: {
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Tempo',
+                fontSize: 12,
+                lineHeight: 2
+              },
+              ticks: {
+                autoSkip: true,
+                autoSkipPadding: 35,
+                maxRotation: 0,
+                maxTicksLimit: 10,
+                fontColor: '#212229'
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false,
+                color: 'transparent',
+                zeroLineColor: '#eeeeee'
+              }
+            }],
+            yAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Temperatura',
+                fontSize: 12,
+                lineHeight: 2
+              },
+              ticks: {
+                display: true,
+                autoSkip: false,
+                maxRotation: 0,
+                stepSize: 5,
+                min: 10,
+                max: 50
+              },
+              gridLines: {
+                drawBorder: false
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          legendCallback: function (chart) {
+            var text = [];
+            text.push('<div class="chartjs-legend"><ul>');
+            for (var i = 0; i < chart.data.datasets.length; i++) {
+              console.log(chart.data.datasets[i]); // see what's inside the obj.
+              text.push('<li>');
+              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+              text.push(chart.data.datasets[i].label);
+              text.push('</li>');
+            }
+            text.push('</ul></div>');
+            return text.join("");
+          },
+          elements: {
+            line: {
+              tension: 0
+            },
+            point: {
+              radius: 0
+            }
+          }
+        }
+        var lineChartCanvas = $("#areaChart1").get(0).getContext("2d");
         var lineChart = new Chart(lineChartCanvas, {
           type: 'line',
           data: lineData,
@@ -426,6 +655,7 @@ $(function () {
     });
     document.getElementById('bar-traffic-legend').innerHTML = barChart.generateLegend();
   }
+  
   if ($("#stackedbarChart").length) {
     var stackedbarChartCanvas = $("#stackedbarChart").get(0).getContext("2d");
     var stackedbarChart = new Chart(stackedbarChartCanvas, {
